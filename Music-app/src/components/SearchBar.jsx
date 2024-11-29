@@ -2,7 +2,7 @@ import MusicApi from "../apiComponent/musicApi";
 import React, {useState} from "react"
 import MusicList from "./musicList";
 
-const SeachBar = () => {
+const SearchBar = () => {
 
 const [musicInput, setMusicInput] = useState("")// user input
 const [music, setMusic] = useState([])// display music fetched
@@ -62,4 +62,4 @@ const searchMusic = async (e)=>{
         </section>
     )
 }
-export default SeachBar
+export default SearchBar
