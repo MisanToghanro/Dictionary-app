@@ -1,6 +1,6 @@
-import SeachBar from "./components/searchBar"
-import SearchBar from "./components/searchBar"
 
+import SearchBar from "./components/SearchBar.jsx"
+import AddFavMusic from "./components/AddFavMusic.jsx"
 function App() {
 
 
@@ -9,6 +9,7 @@ function App() {
 <h1 className="text-center text-yellow-400 p-5 mb-4 mt-5 font-poppins text-4xl font-bold">Audiomack Jnr </h1>
 
 <SearchBar/>
+
 </div>
   )
 }

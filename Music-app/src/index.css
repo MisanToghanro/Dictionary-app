@@ -53,6 +53,20 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.custom-audio-player {
+  width: 100%; /* Make the player responsive */
+  height: 40px; /* Adjust the height */
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.custom-audio-player::-webkit-media-controls-panel {
+  border-radius: 8px; /* Match container radius */
+}
+
+.custom-audio-player::-webkit-media-controls-play-button {
+  color: #000; /* Custom play button color */
+}
 
 
 

@@ -1,6 +1,7 @@
-import MusicApi from "../apiComponent/musicApi";
-import React, {useState} from "react"
-import MusicList from "./musicList";
+import MusicApi from "../apiComponent/MusicApi.js";
+import React, {useState , useEffect} from "react"
+import MusicList from "./MusicList.jsx";
+import AddFavMusic from "./AddFavMusic.jsx";
 
 const SearchBar = () => {
 
@@ -8,6 +9,10 @@ const [musicInput, setMusicInput] = useState("")// user input
 const [music, setMusic] = useState([])// display music fetched
 const [error, setError] = useState("")// error handling
 const [loading, setLoading] = useState(false)
+const [favMusics, setFavMusics] = useState(
+    JSON.parse(localStorage.getItem("favMusics")) || []
+  );
+
 
 //function for search bar
 const searchMusic = async (e)=>{
@@ -30,12 +35,31 @@ const searchMusic = async (e)=>{
     }finally{
         setLoading(false)
     }
+
 }
+
+  // Add to favorites function
+  const addFav = (track) => {
+    if (!favMusics.some((fav) => fav.id === track.id)) {
+      setFavMusics([...favMusics, track]);
+    }
+  };
+
+  // Remove from favorites function
+  const removeFav = (track) => {
+    setFavMusics(favMusics.filter((fav) => fav.id !== track.id));
+  };
+
+  // Store favorites in local storage
+  useEffect(() => {
+    localStorage.setItem("favMusics", JSON.stringify(favMusics));
+  }, [favMusics]);
+
     return(
         <section  >
            
             <form onSubmit={searchMusic} className="flex justify-center">
-                <div className="flex space-x-2 max-w-sm shadow-lg shadow-yellow-400 p-4 mb-6 rounded-md">
+                <div className="flex space-x-3 max-h-lg shadow-lg shadow-yellow-400 p-4 mb-6 rounded-md">
                 <input
             type="text"
             value={musicInput}
@@ -49,16 +73,19 @@ const searchMusic = async (e)=>{
 
         </form>
        
-
-
          {loading && <p className="text-yellow-400 text-2xl text-center mt-6 ">Loading...</p>}
-        { error && <p className="text-red-600 text-2xl text-center mt-6">{error}</p>}
+         { error && <p className="text-red-600 text-2xl text-center mt-6">{error}</p>}
 
-        <div className=" mx-auto  grid gap-4  md:grid-cols-3 sm:grid-cols-2 p-5 sm:p-4">
-                {music.map((item, index) => (
-                    <MusicList key={index} item={item} />
+        <div className="grid gap-4  md:grid-cols-3 sm:grid-cols-1 p-5">
+                {music.map((tracks, index) => (
+                    <MusicList key={index} tracks={tracks} 
+                    addFav={addFav}
+                    removeFav={removeFav}
+                    isFavorite={favMusics.some((fav) => fav.id === tracks.id)}/>
+                    
                 ))}
-            </div>
+                <AddFavMusic favMusics={favMusics} />
+        </div>
         </section>
     )
 }
