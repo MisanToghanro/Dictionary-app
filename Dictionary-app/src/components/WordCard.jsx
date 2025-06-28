@@ -5,19 +5,10 @@ const WordCard = ({word ,a}) =>{
         <div className="p-4 max-w-3xl mx-auto">
           <div key={a}>
 
-         <h2 className="text-black text-2xl font-bold">{word.word}</h2>
+         <h2 className="text-black dark:text-white text-2xl font-bold">{word.word}</h2>
 
           {word.phonetic && (<p className="text-purple text-lg italic">{word.phonetic}</p>)}
 
-            {word.phonetics.map((phonetic, d)=>
-              (<div key={d}>
-                {phonetic.audio &&
-                (<audio controls className="mt-1 w-full sm:w-72">
-                  <source src={`https:${phonetic.audio}`} type="audio/mpeg"/>
-                  Your browser does not support the audio element.
-                </audio>)}
-
-              </div>))}
              
           
           {word.meanings.map((meanings , b)=>
@@ -25,7 +16,7 @@ const WordCard = ({word ,a}) =>{
 
             <div className="flex items-center gap-2">
                <p className="font-bold ">{meanings.partOfSpeech}</p>
-               <hr className="w-full border-gray-light"></hr>
+               <hr className="w-full border-gray-medium"></hr>
             </div>
          
            <div className="mt-4">
