@@ -1,12 +1,27 @@
-# Dictionary-app
-This is a react based  web app using the Dictionary API 
+# 📖 Dictionary App
 
-Users should be able to:
+A React-based web application that allows users to search for word definitions using the Free Dictionary API.
 
-Search for words using the input field
-See the Free Dictionary API's response for the searched word
-See a form validation message when trying to submit a blank form
-Play the audio file for a word when it's available
-Switch between light and dark themes
-View the optimal layout for the interface depending on their device's screen size
-See hover and focus states for all interactive elements on the page
+## 🔧 Features
+
+- 🔍 **Search for Words**  
+  Use the input field to look up definitions and other details for any word.
+
+- 📘 **API Integration**  
+  Displays results returned by the [Free Dictionary API](https://dictionaryapi.dev/).
+
+- ⚠️ **Form Validation**  
+  Shows an error message if the user tries to submit an empty input.
+
+- 🔊 **Audio Playback**  
+  Users can play the pronunciation audio for a word when available.
+
+- 🌗 **Theme Toggle**  
+  Switch between **light** and **dark** themes for a personalized experience.
+
+- 📱 **Responsive Layout**  
+  Optimized for all screen sizes – mobile, tablet, and desktop.
+
+- 🖱️ **Accessible Interactions**  
+  Includes hover and focus states for all interactive elements for better usability.
+
